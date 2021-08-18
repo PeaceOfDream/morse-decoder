@@ -38,7 +38,7 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-	let exprStr = expr.toString().replace(/(\d{10})/g, '$1 ');
+	let exprStr = expr.toString().replace(/\*/g, '0').replace(/(\d{10})/g, '$1 ');
 	const morseNum = {
 		'0000001011': '.-',
 		'0011101010': '-...',
@@ -76,7 +76,7 @@ function decode(expr) {
 		'1111111010': '---..',
 		'1111111110': '----.',
 		'1111111111': '-----',
-		'**********': ' ',
+		'0000000000': ' ',
 	};
 
 	let code = exprStr.split(' ').map(a => a.split('  ').map(
